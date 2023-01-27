@@ -1,0 +1,362 @@
+{
+  "CALL_TO_ACTION_DATA": {
+    "title": "Your order knocking on \nthe door. Please receive",
+    "text": "Pick one of our stock themes, or create your custom theme \nwith the most advanced theme editor on any online.",
+    "image": "../../assets/image/foodDelivery/call-to-action-1.png",
+    "link": {
+      "label": "Order More",
+      "path": "#"
+    }
+  },
+  "GALLERY_DATA": {
+    "images": [
+      {
+        "path": "../../assets/image/foodDelivery/gallery-1.png"
+      },
+      {
+        "path": "../../assets/image/foodDelivery/gallery-2.png"
+      },
+      {
+        "path": "../../assets/image/foodDelivery/gallery-3.png"
+      },
+      {
+        "path": "../../assets/image/foodDelivery/gallery-4.png"
+      }
+    ],
+    "title": "Let’s take your Delivery Experience to the next level",
+    "text": "Pick one of our stock themes, or create your custom theme with the most advanced theme editor on any online survey building tool. Pick one of our stock themes, or create your custom theme with the most advanced theme editor on any online survey building tool."
+  },
+  "QUALITY_FEATURES_DATA": {
+    "title": "Meet our Quality Features",
+    "posts": [
+      {
+        "icon": "../../assets/image/foodDelivery/feature-icon-1.svg",
+        "title": "Analytics Business",
+        "text": "We’re driven beyond just finishing the projects. We want to find smart solutions."
+      },
+      {
+        "icon": "../../assets/image/foodDelivery/feature-icon-2.svg",
+        "title": "Wide Coverage Map",
+        "text": "We’re driven beyond just finishing the projects. We want to find smart solutions."
+      },
+      {
+        "icon": "../../assets/image/foodDelivery/feature-icon-3.svg",
+        "title": "Artificial Intelligence",
+        "text": "We’re driven beyond just finishing the projects. We want to find smart solutions."
+      },
+      {
+        "icon": "../../assets/image/foodDelivery/feature-icon-4.svg",
+        "title": "Largest People",
+        "text": "We’re driven beyond just finishing the projects. We want to find smart solutions."
+      },
+      {
+        "icon": "../../assets/image/foodDelivery/feature-icon-5.svg",
+        "title": "Trusted & Secure",
+        "text": "We’re driven beyond just finishing the projects. We want to find smart solutions."
+      },
+      {
+        "icon": "../../assets/image/foodDelivery/feature-icon-6.svg",
+        "title": "Mobile Apps",
+        "text": "We’re driven beyond just finishing the projects. We want to find smart solutions."
+      }
+    ]
+  },
+  "DOWNLOAD_APP_DATA": {
+    "sectionImage": "../../assets/image/foodDelivery/download-app.png",
+    "title": "Connecting our user with iOS  & Android apps. Download from iTune & Play store",
+    "text": "Pick one of our stock themes, or create your custom theme with the most advanced theme editor on any online survey building tool. We’re driven beyond just finishing the projects. We want to find solutions using our website & apps.",
+    "buttons": [
+      {
+        "icon": "../../assets/image/foodDelivery/app-store.svg",
+        "title": "App Store",
+        "text": "Download on the",
+        "link": "#"
+      },
+      {
+        "icon": "../../assets/image/foodDelivery/play-store.svg",
+        "title": "Google Play",
+        "text": "Download on the",
+        "link": "#"
+      }
+    ]
+  },
+  "CLIENTS_DATA": {
+    "title": "210,000+ people already use our app on a daily basis",
+    "images": [
+      {
+        "path": "../../assets/image/foodDelivery/client-1.png"
+      },
+      {
+        "path": "../../assets/image/foodDelivery/client-2.png"
+      },
+      {
+        "path": "../../assets/image/foodDelivery/client-3.png"
+      },
+      {
+        "path": "../../assets/image/foodDelivery/client-4.png"
+      },
+      {
+        "path": "../../assets/image/foodDelivery/client-5.png"
+      },
+      {
+        "path": "../../assets/image/foodDelivery/client-6.png"
+      }
+    ]
+  },
+  "DELIVERY_PRODUCT_DATA": {
+    "sectionContent": {
+      "title": "We deliver our products as fast as superman can do",
+      "text": "Pick one of our stock themes, or create your custom theme with the most advanced theme editor on any online survey building tool.",
+      "image": "../../assets/image/foodDelivery/deliver-products.png"
+    },
+    "posts": [
+      {
+        "title": "Easy to use application",
+        "text": "We’re driven beyond just finishing the projects. We want to find solutions using our website & apps."
+      },
+      {
+        "title": "Deliver Food within 30 min",
+        "text": "We’re driven beyond just finishing the projects. We want to find solutions using our website & apps."
+      },
+      {
+        "title": "100% Reliable with Privacy",
+        "text": "We’re driven beyond just finishing the projects. We want to find solutions using our website & apps."
+      }
+    ]
+  },
+  "HOW_WORKS_DATA": {
+    "title": "Let’s see how it works",
+    "posts": [
+      {
+        "icon": "../../assets/image/foodDelivery/how-works-1.png",
+        "title": "Become a Delivery Man",
+        "text": "As a delivery driver, you'll make reliable money—working anytime, anywhere.",
+        "link": {
+          "label": "Start Earning",
+          "path": "#"
+        }
+      },
+      {
+        "icon": "../../assets/image/foodDelivery/how-works-2.png",
+        "title": "Become a Partner",
+        "text": "Grow your business and reach new customers by partnering with us.",
+        "link": {
+          "label": "Sign up your store",
+          "path": "#"
+        }
+      },
+      {
+        "icon": "../../assets/image/foodDelivery/how-works-3.png",
+        "title": "Try Android/iOS App",
+        "text": "Get the best DoorDash experience with live order tracking.",
+        "link": {
+          "label": "Get the app",
+          "path": "#"
+        }
+      }
+    ]
+  },
+  "PRODUCT_CATEGORY": {
+    "title": "Popular categories by food",
+    "list": [
+      {
+        "label": "Pizza",
+        "link": "#"
+      },
+      {
+        "label": "Breakfast",
+        "link": "#"
+      },
+      {
+        "label": "Japanese",
+        "link": "#"
+      },
+      {
+        "label": "Halal",
+        "link": "#"
+      },
+      {
+        "label": "Dessert",
+        "link": "#"
+      },
+      {
+        "label": "Lebanese",
+        "link": "#"
+      },
+      {
+        "label": "American",
+        "link": "#"
+      },
+      {
+        "label": "Sushi",
+        "link": "#"
+      },
+      {
+        "label": "Greek",
+        "link": "#"
+      },
+      {
+        "label": "Thai",
+        "link": "#"
+      },
+      {
+        "label": "Vegetarian",
+        "link": "#"
+      },
+      {
+        "label": "Italian",
+        "link": "#"
+      },
+      {
+        "label": "Mexican",
+        "link": "#"
+      },
+      {
+        "label": "Indian",
+        "link": "#"
+      },
+      {
+        "label": "Chinese",
+        "link": "#"
+      },
+      {
+        "label": "Breakfast",
+        "link": "#"
+      },
+      {
+        "label": "Burgers",
+        "link": "#"
+      }
+    ]
+  },
+  "AVAILABLE_RESTAURANTS_DATA": {
+    "title": "Available Restaurant Nearby Area",
+    "posts": [
+      {
+        "image": "../../assets/image/foodDelivery/available-restaurant-1.png",
+        "title": "Pizza Hut Delicious Pizza",
+        "link": "#",
+        "categories": [
+          { "name": "American" },
+          { "name": "Fast Food" },
+          { "name": "Burgers" }
+        ]
+      },
+      {
+        "image": "../../assets/image/foodDelivery/available-restaurant-2.png",
+        "title": "Chipotle Mexican Grill (2675 Geary Boulevard)",
+        "link": "#",
+        "categories": [
+          { "name": "American" },
+          { "name": "Fast Food" },
+          { "name": "Burgers" }
+        ]
+      },
+      {
+        "image": "../../assets/image/foodDelivery/available-restaurant-3.png",
+        "title": "McDonald's® Burgers (Fillmore)",
+        "link": "#",
+        "categories": [
+          { "name": "American" },
+          { "name": "Fast Food" },
+          { "name": "Burgers" }
+        ]
+      },
+      {
+        "image": "../../assets/image/foodDelivery/available-restaurant-4.png",
+        "title": "The Baked Bear San Francisco",
+        "link": "#",
+        "categories": [
+          { "name": "American" },
+          { "name": "Fast Food" },
+          { "name": "Burgers" }
+        ]
+      },
+      {
+        "image": "../../assets/image/foodDelivery/available-restaurant-5.png",
+        "title": "Shake Shack  (3060 Fillmore Street)",
+        "link": "#",
+        "categories": [
+          { "name": "American" },
+          { "name": "Fast Food" },
+          { "name": "Burgers" }
+        ]
+      },
+      {
+        "image": "../../assets/image/foodDelivery/available-restaurant-6.png",
+        "title": "Chubby Noodle Chinese Takeout",
+        "link": "#",
+        "categories": [
+          { "name": "American" },
+          { "name": "Fast Food" },
+          { "name": "Burgers" }
+        ]
+      }
+    ]
+  },
+  "BANNER_DATA": {
+    "sectionImage": "../../assets/image/foodDelivery/banner-1.png",
+    "title": "Your favorite food, delivered your home",
+    "text": "Food, drinks, groceries, and more available for delivery and pickup.",
+    "tagLine": "Apps Available to download on",
+    "buttons": [
+      {
+        "icon": "../../assets/image/foodDelivery/banner-apple.svg",
+        "title": "App Store",
+        "text": "Download on the",
+        "link": "#"
+      },
+      {
+        "icon": "../../assets/image/foodDelivery/banner-google-play.svg",
+        "title": "Google Play",
+        "text": "Download on the",
+        "link": "#"
+      }
+    ]
+  },
+  "MENU_ITEMS": [
+    {
+      "label": "Home",
+      "path": "#banner_section",
+      "offset": "70"
+    },
+    {
+      "label": "Restaurants",
+      "path": "#restaurants",
+      "offset": "70"
+    },
+    {
+      "label": "Features",
+      "path": "#features",
+      "offset": "70"
+    },
+    {
+      "label": "Testimonials",
+      "path": "#testimonials",
+      "offset": "70"
+    },
+    {
+      "label": "Download",
+      "path": "#download",
+      "offset": "70"
+    }
+  ],
+  "TESTIMONIALS_DATA": {
+    "blockImage": "../../assets/image/foodDelivery/testimonials-block-image.png",
+    "title": "What people say about us",
+    "posts": [
+      {
+        "image": "../../assets/image/foodDelivery/testimonials-1-1.png",
+        "text": "OMG! I cannot believe that I have got a brand new landing page after getting this template we are able to use our most used e-commerce template with modern and trending design.",
+        "name": "Mariana Dickey",
+        "designation": "UI Designer"
+      },
+      {
+        "image": "../../assets/image/foodDelivery/testimonials-1-2.png",
+        "text": "OMG! I cannot believe that I have got a brand new landing page after getting this template we are able to use our most used e-commerce template with modern and trending design.",
+        "name": "Jonathan Taylor",
+        "designation": "CEO at Creativex"
+      }
+    ]
+  }
+}

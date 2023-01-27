@@ -1,0 +1,48 @@
+{
+  "name": "test-simple-react-admin",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://githubhosting.github.io",
+  "dependencies": {
+    "@material-ui/core": "4.12.4",
+    "@material-ui/icons": "4.11.3",
+    "@mui/joy": "^5.0.0-alpha.41",
+    "@styled-system/theme-get": "^5.1.2",
+    "firebase": "^9.6.4",
+    "ra-input-rich-text": "^4.1.0",
+    "ra-richtext-tiptap": "^0.0.1",
+    "react": "^18.x",
+    "react-admin": "^4.1.0",
+    "react-admin-firebase": "4.0.0",
+    "react-dom": "^18.x",
+    "react-firebaseui": "^6.0.0",
+    "react-router-dom": "^6.x",
+    "react-scripts": "^5.0.0",
+    "source-map-loader": "^3",
+    "styled-components": "^5.2.1",
+    "styled-system": "5.1.5",
+    "react-icons-kit": "^2.0.0",
+    "react-reveal": "^1.2.2",
+    "react-aria-menubutton": "^7.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "4.1.1",
+    "cpx": "1.5.0",
+    "gh-pages": "3.2.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build-ci": "react-scripts build",
+    "cp-dist": "rm -rf ./node_modules/react-admin-firebase/dist && cp -r ../dist ./node_modules/react-admin-firebase/dist",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

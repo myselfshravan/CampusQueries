@@ -1,0 +1,22 @@
+body {
+  display: block;
+  margin: 0px;
+}
+.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  overflow: visible !important;
+}
+.css-c1bgk0-RaLogin-root {
+  min-height: 150vh !important;
+}
+hr.line1 {
+  border: 1px solid #f00;
+}
+
+hr.line2 {
+  border-top: 1px dashed #f00;
+  border-bottom: 2px solid #0f0;
+  height: 4px;
+}
+.css-1ex1afd-MuiTableCell-root {
+  text-align: center !important;
+}
