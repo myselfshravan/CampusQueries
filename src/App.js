@@ -82,6 +82,14 @@ class App extends React.Component {
             edit={PostEdit}
           />
           <Resource
+            name="found"
+            list={Posts.FoundList}
+            show={Posts.FoundShow}
+            create={Posts.FoundCreate}
+            edit={Posts.FoundEdit}
+          />
+
+          <Resource
             name="users"
             icon={UserIcon}
             list={UserList}

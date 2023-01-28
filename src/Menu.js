@@ -31,15 +31,14 @@ export const MyMenu = (props) => (
     />
     <MenuItemLink
       to="/found"
+      primaryText="Found Item ?"
+      leftIcon={<LostIcon />}
+    />
+    <MenuItemLink
+      to="/lost"
       primaryText="Lost Item ?"
       leftIcon={<FindIcon />}
     />
-    <MenuItemLink to="/lost" primaryText="Found Item ?" leftIcon={<LostIcon />} />
-    {/* <MenuItemLink
-      to="/comments"
-      primaryText="Comments"
-      leftIcon={<ChatBubbleIcon />}
-    /> */}
     <MenuItemLink to="/mypage" primaryText="Blogs" leftIcon={<BlogIcon />} />
   </Menu>
 );

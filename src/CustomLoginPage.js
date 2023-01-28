@@ -7,12 +7,13 @@ import ForgotPasswordButton from "./CustomForgotPassword";
 import styles from "./styles.css";
 
 // Configure FirebaseUI.
-const uiConfig = {
+export const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: "popup",
   // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
   signInSuccessUrl: "#/posts",
   // Optional callbacks in order to get Access Token from Google,Facebook,... etc
+  signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID],
   callbacks: {
     signInSuccessWithAuthResult: (result) => {
       const credential = result.credential;
@@ -20,11 +21,9 @@ const uiConfig = {
       const user = result.user;
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const accessToken = credential.accessToken;
-      console.log({ result, user, accessToken });
     },
   },
 };
-
 const SignInScreen = () => (
   <StyledFirebaseAuth firebaseAuth={firebase.auth()} uiConfig={uiConfig} />
 );
@@ -34,6 +33,14 @@ const SignInScreen = () => (
 ></link>;
 const CustomLoginForm = (props) => (
   <div>
+    <div
+      style={{ fontFamily: "Open Sans", textAlign: "center", margin: "10px" }}
+    >
+      <p>
+        <b>Note:</b> <br></br>
+        <i style={{ color: "red" }}>Refresh the page after Signing </i>
+      </p>
+    </div>
     <LoginForm {...props} />
     <SignInScreen />
     <ForgotPasswordButton {...props} />
