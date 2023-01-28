@@ -88,7 +88,13 @@ class App extends React.Component {
             create={Posts.FoundCreate}
             edit={Posts.FoundEdit}
           />
-
+          <Resource
+            name="lost"
+            list={Posts.LostList}
+            show={Posts.LostShow}
+            create={Posts.LostCreate}
+            edit={Posts.LostEdit}
+          />
           <Resource
             name="users"
             icon={UserIcon}
