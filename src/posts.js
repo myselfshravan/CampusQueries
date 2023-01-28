@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState, useRef, useId } from "react";
 import {
   Datagrid,
   List,
@@ -41,11 +42,14 @@ import {
   SelectField,
   ChipField,
   usePermissions,
+  SortButton,
+  getElementsFromRecords,
+  NumberInput,
 } from "react-admin";
+import { FormDataConsumer } from "react-admin";
 import { useMediaQuery } from "@mui/material";
 import { SimpleList } from "react-admin";
 import { RichTextInput, RichTextInputToolbar } from "ra-input-rich-text";
-// import { RichTextInput, RichTextInputToolbar } from "ra-richtext-tiptap";
 import { Typography, Box, Toolbar } from "@material-ui/core";
 import { Grid, Card } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -59,25 +63,65 @@ import {
 } from "./FirebaseReferenceFields";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
-// const PostFilter = (props) => (
-//   <Filter {...props}>
-//     <TextInput label="Search" source="title" alwaysOn />
-//   </Filter>
-// );
+const firebaseConfig = {
+  apiKey: "AIzaSyACyiB2f-Sl8fbez4sjwBxJwn-eGadnXcg",
+  authDomain: "auth-44578.firebaseapp.com",
+  projectId: "auth-44578",
+  storageBucket: "auth-44578.appspot.com",
+  messagingSenderId: "595971213871",
+  appId: "1:595971213871:web:432717a56846feb84a14da",
+  measurementId: "G-BJWWD8H4BX",
+};
+firebase.initializeApp(firebaseConfig);
+const database = firebase.firestore();
 
-// const ReferenceFilter = (props) => (
-//   <Filter {...props}>
-//     <ReferenceInput
-//       label="Organization"
-//       source="user.id"
-//       reference="users"
-//       allowEmpty
-//     >
-//       <SelectInput optionText="name" />
-//     </ReferenceInput>
-//   </Filter>
-// );
+const PostFilter = (props) => (
+  <Filter {...props}>
+    <TextInput label="Search" source="title" alwaysOn />
+  </Filter>
+);
+
+const ReferenceFilter = (props) => (
+  <Filter {...props}>
+    <ReferenceInput
+      label="Organization"
+      source="user.id"
+      reference="users"
+      allowEmpty
+    >
+      <SelectInput optionText="name" />
+    </ReferenceInput>
+  </Filter>
+);
+
+const LastVisitedFilter = () => (
+  <FilterList label="Last visited" icon={<AccessTimeIcon />}>
+    <FilterListItem
+      label="Pending"
+      value={{
+        last_seen_gte: endOfYesterday().toISOString(),
+        last_seen_lte: undefined,
+      }}
+    />
+    <FilterListItem
+      label="In Progress"
+      value={{
+        last_seen_gte: startOfWeek(new Date()).toISOString(),
+        last_seen_lte: undefined,
+      }}
+    />
+    <FilterListItem
+      label="Resolved"
+      value={{
+        last_seen_gte: subWeeks(startOfWeek(new Date()), 1).toISOString(),
+        last_seen_lte: startOfWeek(new Date()).toISOString(),
+      }}
+    />
+  </FilterList>
+);
+
 const Div = styled("div")(({ theme }) => ({
   ...theme.typography.button,
   backgroundColor: theme.palette.background.paper,
@@ -104,8 +148,7 @@ export const PostList = (props) => {
           <Typography variant="h6" component="div">
             Submit Queries
           </Typography>
-          {/* <Typography sx={{ mb: 1.5 }} color="text.secondary"></Typography> */}
-          <Typography variant="body2">If you have an queries</Typography>
+          <Typography variant="body2">If you have any queries</Typography>
         </CardContent>
         <CardActions>
           <Button
@@ -113,7 +156,6 @@ export const PostList = (props) => {
             to={{
               pathname: "/problems/create",
             }}
-            // state={{ record: { post_id: record.id } }}
           >
             Submit Now
           </Button>
@@ -135,6 +177,7 @@ export const PostList = (props) => {
           </>
         ) : (
           <div>
+            <SortButton label="Sort by" fields={["status", "name", "title"]} />
             <Card>
               <Datagrid rowClick="show" bulkActionButtons={false}>
                 <TextField source="name" />
@@ -270,6 +313,25 @@ export const PostEdit = (props) => {
   } else {
     var email = null;
   }
+  const [problems, setProblems] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = firebase
+
+      .firestore()
+      .collection("problems")
+      .onSnapshot((snapshot) => {
+        const newProblems = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProblems(newProblems);
+      });
+    return () => unsubscribe();
+  }, []);
+  const id = useId();
+  const [input, setInput] = useState(props?.value ?? "");
+  console.log("input", input);
 
   return (
     <Edit {...props}>
@@ -277,8 +339,24 @@ export const PostEdit = (props) => {
         <TextInput disabled source="name" />
         <TextInput disabled source="title" />
         <TextInput disabled source="USN" />
-        <RichTextInput source="body" />
         <TextInput disabled source="category" />
+        <TextInput
+          id={id}
+          source="updatedby"
+          label="Verify Mail"
+          onClick={(e) => setInput(e.target.value)}
+        />
+        {input === email && (
+          <RichTextInput
+            fullWidth
+            multiline
+            label=""
+            source="body"
+            validate={ideaDescription}
+            helperText="Describe atleast with 60 characters"
+          />
+        )}
+        <RichTextField disabled source="body" />
         {email === "admin@admin.com" && (
           <SelectInput
             title="Status"
@@ -307,8 +385,12 @@ export const PostEdit = (props) => {
 
 export const FoundList = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
-  //check if username is admin@admin.com
-  // const record = useRecordContext();
+  if (firebase.auth().currentUser) {
+    var email = firebase.auth().currentUser.email;
+    console.log(email);
+  } else {
+    var email = null;
+  }
   return (
     <>
       <Card sx={{ minWidth: 275, mt: 3, mb: 2 }}>
@@ -330,7 +412,6 @@ export const FoundList = (props) => {
             to={{
               pathname: "/found/create",
             }}
-            // state={{ record: { post_id: record.id } }}
           >
             Report Now
           </Button>
@@ -353,12 +434,17 @@ export const FoundList = (props) => {
         ) : (
           <div>
             <Card>
-              <Datagrid rowClick="show" bulkActionButtons={false}>
-                <TextField source="name" />
-                <TextField source="title" />
-                <TextField source="status" />
-                <ShowButton label="Show" />
-              </Datagrid>
+              {email === null && (
+                <CardContent>Only Admin has access to View List...</CardContent>
+              )}
+              {email === "admin@admin.com" && (
+                <Datagrid rowClick="show" bulkActionButtons={false}>
+                  <TextField source="name" />
+                  <TextField source="title" />
+                  <TextField source="status" />
+                  <ShowButton label="Show" />
+                </Datagrid>
+              )}
             </Card>
           </div>
         )}
@@ -376,6 +462,9 @@ export const FoundShow = (props) => (
       <RichTextField source="body" />
       <TextField source="category" />
       <TextField source="status" />
+      <TextField source="number" />
+      <ImageField source="images" src="src" title="desc" />
+
       <EmailField source="updatedby" />
       <DateField
         options={{
@@ -426,6 +515,7 @@ export const FoundCreate = (props) => {
           defaultValue={email}
           validate={USN}
         />
+        <NumberInput label="Phone Number" source="number" />
         <Typography sx={{ mt: 2 }}>Choose the Item Category</Typography>
         <SelectInput
           source="category"
@@ -516,42 +606,45 @@ export const FoundCreate = (props) => {
   );
 };
 
-export const FoundEdit = (props) => (
-  <Edit {...props}>
-    <SimpleForm>
-      <TextInput disabled source="name" />
-      <TextInput disabled source="title" />
-      <TextInput disabled source="USN" />
-      <RichTextInput source="body" />
-      <TextInput disabled source="category" />
-      <SelectInput
-        title="Status"
-        source="status"
-        choices={[
-          { id: "pending", name: "Pending" },
-          { id: "inprogress", name: "In Progress" },
-          { id: "resolved", name: "Resolved" },
-        ]}
-      />
-      <Typography>Created Date:</Typography>
-      <DateField
-        options={{
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        }}
-        source="lastupdate"
-      />
-    </SimpleForm>
-  </Edit>
-);
+export const FoundEdit = (props) => {
+  return (
+    <Edit {...props}>
+      <SimpleForm>
+        <TextInput disabled source="name" />
+        <TextInput disabled source="title" />
+        <TextInput disabled source="USN" />
+        <RichTextInput source="body" />
+        <TextInput disabled source="category" />
+        <SelectInput
+          title="Status"
+          source="status"
+          choices={[
+            { id: "Found", name: "Found" },
+            { id: "Pending Verification", name: "Pending Verification" },
+            { id: "Returned to Owner", name: "Returned to Owner" },
+            { id: "Sent to Campus Security", name: "Sent to Campus Security" },
+            { id: "Unable to Return", name: "Unable to Return" },
+          ]}
+        />
+        <Typography>Created Date:</Typography>
+        <DateField
+          options={{
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }}
+          source="lastupdate"
+        />
+      </SimpleForm>
+    </Edit>
+  );
+};
 
 export const LostList = (props) => {
   const isSmall = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   if (firebase.auth().currentUser) {
     var email = firebase.auth().currentUser.email;
-    var name = email.split("@");
   }
 
   return (
@@ -571,9 +664,6 @@ export const LostList = (props) => {
             reported lost, you're sure to find what you're looking for on Campus
             Queries. Start searching today and get your lost items back in your
             hands!
-          </Typography>
-          <Typography variant="body2">
-            <b>{email}</b>
           </Typography>
         </CardContent>
         <CardActions>
@@ -607,7 +697,6 @@ export const LostList = (props) => {
               <Datagrid rowClick="show" bulkActionButtons={false}>
                 <TextField source="name" />
                 <TextField source="title" />
-                <TextField source="status" />
                 <ShowButton label="Show" />
               </Datagrid>
             </Card>
@@ -626,7 +715,10 @@ export const LostShow = (props) => (
       <TextField source="title" label="Problem Title" />
       <RichTextField source="body" />
       <TextField source="category" />
-      <TextField source="status" />
+
+      <TextField source="number" />
+      <ImageField source="images" src="src" title="desc" />
+
       <EmailField source="updatedby" />
       <DateField
         options={{
@@ -677,6 +769,8 @@ export const LostCreate = (props) => {
           defaultValue={email}
           validate={USN}
         />
+        <NumberInput label="Number" source="number" />
+
         <Typography sx={{ mt: 2 }}>Choose the Item Category</Typography>
         <SelectInput
           source="category"
@@ -732,18 +826,6 @@ export const LostCreate = (props) => {
         >
           <ImageField source="src" title="title" />
         </ImageInput>
-        <Typography sx={{ mt: 2 }}>Choose the Item Status</Typography>
-        <SelectInput
-          title="Status"
-          source="status"
-          choices={[
-            { id: "Found", name: "Found" },
-            { id: "Pending Verification", name: "Pending Verification" },
-            { id: "Returned to Owner", name: "Returned to Owner" },
-            { id: "Sent to Campus Security", name: "Sent to Campus Security" },
-            { id: "Unable to Return", name: "Unable to Return" },
-          ]}
-        />
       </SimpleForm>
     </Create>
   );

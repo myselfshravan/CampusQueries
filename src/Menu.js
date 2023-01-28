@@ -23,7 +23,6 @@ import LostIcon from "@mui/icons-material/ContactSupport";
 export const MyMenu = (props) => (
   <Menu {...props}>
     <DashboardMenuItem />
-    {/* <MenuItemLink to="/Users" primaryText="Users" leftIcon={<UserIcon />} /> */}
     <MenuItemLink
       to="/problems"
       primaryText="Problems"

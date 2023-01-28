@@ -1,8 +1,10 @@
-button.firebaseui-idp-button, button.firebaseui-tenant-button {
+button.firebaseui-idp-button,
+button.firebaseui-tenant-button {
   max-width: unset;
   padding-left: 53px;
 }
 
-div.firebaseui-card-content, div.firebaseui-card-footer {
+div.firebaseui-card-content,
+div.firebaseui-card-footer {
   padding: 0 10px;
 }

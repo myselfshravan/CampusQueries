@@ -10,16 +10,15 @@ import styles from "./styles.css";
 export const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: "popup",
-  // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
   signInSuccessUrl: "#/posts",
-  // Optional callbacks in order to get Access Token from Google,Facebook,... etc
-  signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID],
+  signInOptions: [
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+  ],
   callbacks: {
     signInSuccessWithAuthResult: (result) => {
       const credential = result.credential;
-      // The signed-in user info.
       const user = result.user;
-      // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       const accessToken = credential.accessToken;
     },
   },

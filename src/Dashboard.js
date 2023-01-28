@@ -68,7 +68,8 @@ export default () => {
           </Typography>
           <Typography sx={{ mt: 2 }} color="text.secondary">
             Streamlining the Lost and Found and Complaints Process on College
-            Campus
+            Campus<br></br>
+            Empowering students, one question at a time.
           </Typography>
         </CardContent>
         <CardActions>
@@ -84,37 +85,6 @@ export default () => {
           </Button>
         </CardActions>
       </Card>
-      {/* <Card sx={{ mt: 3, ml: 1, mr: 1, mb: 0, boxShadow: 2, borderRadius: 1 }}>
-      <CardActions>
-        <Button
-          href="/#/Users"
-          size="medium"
-          variant="contained"
-          boxShadow="2"
-          sx={{ mt: 1, ml: 1, mr: 1, mb: 1 }}
-        >
-          Users
-        </Button>
-        <Button
-          href="/#/Cooks"
-          size="medium"
-          variant="contained"
-          boxShadow="2"
-          sx={{ mt: 1, ml: 1, mr: 1, mb: 1 }}
-        >
-          Cooks
-        </Button>
-        <Button
-          href="/#/Blogs"
-          size="medium"
-          variant="contained"
-          boxShadow="2"
-          sx={{ mt: 1, ml: 1, mr: 1, mb: 1 }}
-        >
-          Blogs
-        </Button>
-      </CardActions>
-    </Card> */}
     </>
   );
 };
