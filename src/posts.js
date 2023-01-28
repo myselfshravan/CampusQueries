@@ -279,7 +279,7 @@ export const PostEdit = (props) => {
         <TextInput disabled source="USN" />
         <RichTextInput source="body" />
         <TextInput disabled source="category" />
-        {email === "admin" && (
+        {email === "admin@admin.com" && (
           <SelectInput
             title="Status"
             source="status"
